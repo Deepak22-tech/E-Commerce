@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.accordion-button{
+	background-color: #41ba63;
+	color: black;
+	}
+
+	.accordian-button:active{
+		background-color: #06521c;
+		color: white;
+	}
+	.accordion-button:focus{
+	box-shadow: none;
+	border: 1px solid #043d14;
+	}
+	.accordion-button:not(.collapsed){
+	background-color: #41ba63;
+	color: black;
+	}
+	.accordion-button:not(.collapsed)::after{
+	background-image: url('Images/accordion-nav.svg');
+	}
+	body{
+	background-color: #85FFBD;
+	background-image: linear-gradient(180deg, #85FFBD 36%, #FFFB7D 100%);
+	
+	}

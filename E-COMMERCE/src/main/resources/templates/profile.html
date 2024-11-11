@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base.html :: layout(~{:: section})">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+
+  <div class="container mt-4">
+    
+    <!-- Profile Card -->
+    <div class="card mb-3 mx-auto" style="max-width: 330px;">
+      <div class="row no-gutters align-items-center mt-5">
+        <div class="col-3 col-md-2">
+          <img th:src="@{'/images/profile.png'}" alt="" style="width: 45px; height: 45px; object-fit: contain" class="ml-2 mt-2 mb-2">
+        </div>
+        <div class="col-9 col-md-10">
+          <div class="card-body p-0">
+            <p class="card-text ml-3 mt-2">
+              <span style="font-size:12px;">Hello,</span><br>
+              <b th:text="${user.name}"></b>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toggle Buttons for Profile and Address -->
+    <p>
+      <button class="btn btn-primary mb-2" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Profile</button>
+      <button class="btn btn-primary mb-2" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2">Address</button>
+    </p>
+
+    <div class="row">
+      
+      <!-- Profile Form -->
+      <div class="col-12 col-md-6">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="card card-body">
+            <form th:action="@{/profileProcess}" method="post">
+              <h3>Profile Information</h3>
+              <div class="form-group mt-3">
+                <label for="profileName">Name</label>
+                <input type="text" class="form-control" id="profileName" name="profile_name" th:value="${user.name}">
+              </div>
+              <div class="form-group">
+                <label for="profileEmail">Email</label>
+                <input type="text" class="form-control" id="profileEmail" name="user_email" th:value="${user.email}">
+              </div>
+              <div class="form-group">
+                <label for="profilePhone">Mobile No</label>
+                <input type="number" class="form-control" id="profilePhone" name="profile_phone">
+              </div>
+              <div class="form-group">
+                <label for="profileLocality">Locality</label>
+                <input type="text" class="form-control" id="profileLocality" name="profile_locality">
+              </div>
+              <div class="form-group">
+                <label for="profileCity">City</label>
+                <input type="text" class="form-control" id="profileCity" name="profile_city">
+              </div>
+              <div class="form-group">
+                <label for="profileState">State</label>
+                <select class="form-control" id="profileState" name="profile_state">
+                  <option value="select state">Select state</option>
+                  <!-- Add state options here -->
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <!-- Additional options omitted for brevity -->
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="profilePincode">Pincode</label>
+                <input type="number" class="form-control" id="profilePincode" name="profile_pincode">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Address Information -->
+      <div class="col-12 col-md-6 mt-4 mt-md-0">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="card card-body" th:each="e : ${list}">
+            <h3>Address</h3>
+            <p>Name: <b th:text="${e.profile_name}"></b></p>
+            <p>Mobile No: <b th:text="${e.profile_phone}"></b></p>
+            <p>Locality: <b th:text="${e.profile_locality}"></b></p>
+            <p>City: <b th:text="${e.profile_city}"></b></p>
+            <p>State: <b th:text="${e.profile_state}"></b></p>
+            <p>Pincode: <b th:text="${e.profile_pincode}"></b></p>
+            <div class="text-center">
+              <a th:href="@{'/updateProfile?id=' + ${e.profile_id}}"><button class="btn btn-success">Update</button></a>
+              <button class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+
+
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base.html :: layout(~{:: section})">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+
+ <div class="container mt-5">
+    <div class="row">
+      
+      <!-- Cart Table -->
+      <div class="col-12 col-md-9 mt-5">
+        <div class="card">
+          <div class="card-header text-center">
+            <h3>Shopping Cart</h3>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">User Email</th>
+                    <th scope="col">Product Image</th>
+                    <th scope="col">Product Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Product Category</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="c: ${clist}">
+                    <td th:text="${c.cart_name}"></td>
+                    <td th:text="${c.user_email}"></td>
+                    <td>
+                      <img th:src="@{'/images/'+${c.cart_image}}" class="img-fluid rounded" alt="" style="max-height:130px; max-width:100px;">
+                    </td>
+                    <td th:text="|&#8377${c.cart_price}|"></td>
+                    <td>
+                      <div class="text-center d-flex justify-content-center align-items-center">
+                        <a th:href="@{'/quantityDecrease?cid=' + ${c.cart_id}}">
+                          <button type="button" id="decrease" style="border: none; background-color: transparent;">
+                            <img alt="" th:src="@{'/images/dash.svg'}" style="max-height: 22px; max-width: 22px">
+                          </button>
+                        </a>
+                        <span id="span" th:text="${c.cart_quantity}" class="mx-2"></span>
+                        <a th:href="@{'/quantityIncrease?cid=' + ${c.cart_id}}">
+                          <button type="button" id="increase" style="border: none; background-color: transparent;">
+                            <img alt="" th:src="@{'/images/plus.svg'}" style="max-height:18px; max-width:18px;">
+                          </button>
+                        </a>
+                      </div>
+                    </td>
+                    <td id="price" th:text="|&#8377${c.total_price}|"></td>
+                    <td th:text="${c.cart_category}"></td>
+                    <td>
+                      <a th:href="@{'/delete?id=' + ${c.cart_id}}">
+                        <img alt="" th:src="@{'/images/delete.png'}" class="img-fluid" width="30px">
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-right font-weight-bold text-success " th:text="|Total Amount: &#8377${totalprice}|"></p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Price Details -->
+      <div class="col-12 col-md-3 mt-4 mt-md-5">
+        <div class="card">
+          <div class="card-header text-center">
+            <h3>Price Details</h3>
+          </div>
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center">Price <span th:text="|&#8377${actualprice}|"></span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center text-success">Discount <span th:text="|-&#8377${discount}|"></span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">Delivery Charges <span class="text-success">Free</span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center"><b>Total Amount</b> <span th:text="|&#8377${totalprice}|"></span></li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <p class="text-success font-weight-bold" th:text="|You will save &#8377${discount} on this order|"></p>
+            <div class="text-center">
+         
+              <a th:href="@{placeorder}">
+                <button type="button" class="btn btn-success btn-block mt-1">Check Out</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+</section>
+
+</body>
+</html>

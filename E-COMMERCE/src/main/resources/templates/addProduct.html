@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="adminBase.html :: layout(~{:: section})"><head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+<div class="container mt-5">
+<div class="row">
+<div class="col-md-6 m-auto">
+<div class="card p-2">
+<div class="card-header text-center">
+<h3>PRODUCT</h3>
+</div>
+	<form th:action="@{productProcess}" method="post" enctype="multipart/form-data">
+							
+						<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Name</label> 
+						<div class="col-sm-8">
+						<input type="text" name="prod_name" class="form-control"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+							</div>
+					</div>
+						<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Description</label> 
+						<div class="col-sm-8">
+						<textarea class="form-control" name="prod_desc"
+							id="exampleFormControlTextarea1" rows="3"></textarea>
+							</div>
+					</div>
+					
+						<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Quantity</label> 
+						<div class="col-sm-8"><input
+							type="number" name="prod_quantity" class="form-control"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					</div>
+
+						<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Price</label> 
+						<div class="col-sm-8">
+						<input type="number" name="prod_price" class="form-control"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					</div>
+
+						<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Actual Price</label> 
+						<div class="col-sm-8">
+						<input type="number" name="prod_actualprice" class="form-control"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+							</div>
+					</div>
+	
+					<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Category</label> 
+						<div class="col-sm-8">
+						<input type="text" name="prod_category" class="form-control"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					</div>
+
+						<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Discount</label> 
+						<div class="col-sm-8"> <input
+							type="number" name="prod_discount" class="form-control"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					</div>
+						<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Image1</label> 
+						<div class="col-sm-8">
+						<input type="file" class="form-control" name="productimage"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					</div>
+							<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Image2</label> 
+						<div class="col-sm-8">
+						<input type="file" class="form-control" name="productimage1"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					</div>
+							<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Image3</label> 
+						<div class="col-sm-8">
+						<input type="file" class="form-control" name="productimage2"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					</div>
+						<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Image4</label> 
+						<div class="col-sm-8">
+						<input type="file" class="form-control" name="productimage3"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					</div>
+							<div class="row mb-3 mt-3">
+						<label for="exampleInputName1" class="col-sm-4 col-form-label">Product Image5</label> 
+						<div class="col-sm-8">
+						<input type="file" class="form-control" name="productimage4"
+							id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					</div>
+					<div class="d-flex justify-content-center " >
+					<button type="submit" class="btn btn-primary mr-3">Submit</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					</div>
+					</form>
+					</div>
+					</div>
+					</div>
+					</div>
+</section>
+
+</body>
+</html>

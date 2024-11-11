@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base.html :: layout(~{:: section})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+
+<div class="container mt-5">
+<div class="col-md-12 shadow-sm p-3 mb-5 bg-white rounded mx-auto">
+<h3 class="text-center m-3 font-weight-bold ">PRODUCTS</h3>
+<div class="row">
+<div class="card mb-3 shadow-sm p-3 m-1 bg-white rounded mx-auto " style="width: 18rem;">
+<div >
+<a th:href="@{addProduct}"><img alt="" th:src="@{'/images/'+add-product.png}" style="width:200px; justify-content: center; align-items: center;"></a>
+  <div class="card-header">
+ <h3 class="card-text">Add Product</h3>
+  </div>
+</div>
+ 
+</div>
+<div class="card mb-3 shadow-sm p-3 m-1 bg-white rounded mx-auto " style="width: 18rem;">
+<div>
+<a th:href="@{productList}"><img alt="" th:src="@{'/images/'+check-list.png}" style="width:200px;"></a>
+  <div class="card-header">
+ <h3 class="card-text">Product List</h3>
+  </div>
+</div>
+ 
+</div>
+<div class="card mb-3 shadow-sm p-3 m-1 bg-white rounded mx-auto" style="width: 18rem;">
+<div>
+<a th:href="@{productList}"><img alt="" th:src="@{'/images/'+ product.png}" style="width:200px;"></a>
+  <div class="card-header">
+ <h3 class="card-text">Update Product</h3>
+  </div>
+</div>
+ 
+</div>
+
+
+
+</div>
+</div>
+
+<div class="col-md-12 shadow-sm p-2 bg-white rounded mx-auto">
+<h3 class="text-center font-weight-bold ">USERS</h3>
+<div class="row">
+<div class="card mb-3 shadow-sm p-3 m-1 bg-white rounded mx-auto " style="width: 18rem;">
+<div >
+<a th:href="@{login}"><img alt="" th:src="@{'/images/'+add-friend.png}" style="width:200px;"></a>
+  <div class="card-header">
+ <h3 class="card-text">ADD USER</h3>
+  </div>
+</div>
+ 
+</div>
+<div class="card mb-3 shadow-sm p-3 m-1 bg-white rounded mx-auto " style="width: 18rem;">
+<div>
+<a th:href="@{userList}"><img alt="" th:src="@{'/images/'+ customer.png}" style="width:200px;"></a>
+  <div class="card-header">
+ <h3 class="card-text">USER List</h3>
+  </div>
+</div>
+ 
+</div>
+<div class="card mb-3 shadow-sm p-3 m-1 bg-white rounded mx-auto" style="width: 18rem;">
+<div>
+<a th:href="@{allOrders}"><img alt="" th:src="@{'/images/'+ manifest.png}" style="width:200px;"></a>
+  <div class="card-header">
+ <h3 class="card-text">GET ALL ORDER</h3>
+  </div>
+</div>
+ 
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

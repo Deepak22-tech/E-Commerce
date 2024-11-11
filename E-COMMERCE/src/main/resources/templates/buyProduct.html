@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base.html :: layout(~{:: section})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<section>
+<div class="container">
+<div class="row mt-5">
+<%if(l1.isEmpty()){ %>
+<div class="container text-center mt-5">
+<h1>Your cart is empty!!</h1>
+<img alt="" src="Images/emptycart.png" style="max-height:200px; max-width:200px; aligh-items:center;" class="mt-5">
+<p style="text-align:right; font-size:20px; color:green; display:none;">TotalPrice:-<b> &#8377 <%=cimpl1.getTotalpriceofuser(email1) %></b> </p>
+</div>
+
+<div class="col-md-9">
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        <b style="font-size:20px;" >Order Summary</b>
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+      
+      
+
+<div class="card-body">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">item-name</th>
+      <th scope="col">item-image</th>
+      <th scope="col">price</th>
+      <th scope="col">quantity</th>
+      <th scope="col">Totalprice</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>   
+      <td><%=p.getPname() %></td>
+      <td><img alt="" style=" min-width:145px; max-height:80px; max-width:150px;" src="Images/<%=p.getPimage()%>"></td>
+      <td> &#8377 <%= nf2.format(ap) %></td>
+      <td> <div class="text-center"><%= p.getPquantity() %> </div>  </td>
+      <td> &#8377 <%= nf2.format(tp) %></td>      
+    </tr>
+    <%} %>
+    
+  </tbody>
+</table>
+<% int totalprice = cimpl2.getTotalpriceofuser(email2); %>
+<p style="text-align:right; font-size:20px; color:green; ">TotalPrize:-<b> &#8377 <%= nf2.format(totalprice) %></b> </p>
+	
+</div>
+
+      
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+        <b style="font-size:20px;" >Address</b>
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+      <div class="accordion-body">
+		
+		 <ul class="list-group list-group-flush">
+<%for(Profile pp:liprofile){ %>
+
+<li class="list-group-item d-flex justify-content-between align-item-center  px-0 pb-0">
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    <b style="font-size:18px;">Name :- </b><%=pp.getName() %><br> <b style="font-size:18px;">Locality :- </b><%=pp.getLocality() %><br> <b style="font-size:18px;">City :- </b><%=pp.getCity() %><br> <b style="font-size:18px;">State :- </b><%=pp.getState() %><br> <b style="font-size:18px;">Pincode :- </b><%=pp.getPincode() %>.
+  </label>
+</div>
+</li>
+
+<%} %>
+</ul>
+		
+		
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        <b style="font-size:20px;">Terms & conditions</b>
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body">
+      
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam quidem rem dolore fugit. Maxime est rerum, omnis
+    unde deleniti nobis beatae ipsum et nihil alias sed doloribus. Rem, porro? Perferendis neque delectus quis
+    asperiores placeat, in earum, ullam alias nisi omnis aliquam nesciunt iste inventore officiis eum eos cumque porro
+    similique voluptas quae! Sint,
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+<div class="col-md-3">
+<div class="card">
+<div class="card-heading mt-2 text-center"> <h3>Price details</h3></div>
+<div class="card-body p-0">
+
+<ul class="list-group list-group-flush">
+<li class="list-group-item d-flex justify-content-between align-items-center">Price(<%= cimpl2.getcart(email2).size() %> items) <span>&#8377 <%= nf2.format(price) %></span></li>
+<li class="list-group-item d-flex justify-content-between align-items-center">Delivery Charges <span style="color:green;">Free</span></li>
+<li class="list-group-item d-flex justify-content-between align-items-center">Total Payable <span>&#8377 <%= nf2.format(actualprice) %> </span></li>
+</ul>
+
+</div>
+<div class="card-footer"><strong style="color:green;">Your Total savings of this order &#8377 <%= nf2.format(discount) %></strong><br>
+<div class="text-center">
+
+<a href="placeorder?email=<%=uemail%>"><button class="btn btn-success mt-1">Place order</button></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</section>
+
+</body>
+</html>

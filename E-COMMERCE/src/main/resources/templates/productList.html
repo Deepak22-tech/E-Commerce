@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="adminbase.html :: layout(~{:: section})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+
+<table class="table mt-5">
+  <thead>
+    <tr>
+     
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Image</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Product Price</th>
+      <th scope="col">Actual Price</th>
+      <th scope="col">Product Category</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+ 
+ 
+    <tr th:each="p: ${plist}">
+ 
+   
+    <td th:text="${p.prod_name}"></td>
+    <td ><img  th:src="@{'/images/'+${p.prod_image}}" class="rounded mx-auto" alt="" style="max-height:130px; max-width:100px;"></td>
+    <td th:text="${p.prod_quantity}"></td>
+    <td th:text="&#8377 +${p.prod_price}"></td>
+    <td th:text="&#8377+${p.prod_actualprice}"></td>
+    <td th:text="${p.prod_category}"></td>
+    <td><a th:href="@{'updateProduct?id=' + ${p.prod_id}}" class="mr-2"><img th:src="@{'/images/'+edit.png}" width="20px"></a><a><img alt="" th:src="@{'/images/'+ trash.svg}"></a></td>
+ 
+    </tr>
+   
+    
+  </tbody>
+</table>
+</section>
+
+</body>
+</html>
